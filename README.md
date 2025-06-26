@@ -1,2 +1,12 @@
-# Love Confession Page
-A romantic love confession webpage with animated heart effect
+# 爱情告白网页
+
+这是一个浪漫的爱情告白网页，包含动画心形效果和告白信息。
+
+## 功能特点
+- 精美的动画心形效果
+- 响应式设计，适配各种设备
+- 浪漫的告白文字展示
+
+## 使用方法
+1. 克隆本仓库
+2. 打开index.html文件即可查看效果
