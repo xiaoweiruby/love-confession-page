@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>炫酷爱情告白</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+            overflow: hidden;
+        }
+        /* 粒子背景效果 */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.7);
+            pointer-events: none;
+            animation: float 8s infinite ease-in-out;
+        }
+        /* 3D心形动画 */
+        .heart {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 20px auto;
+            transform-style: preserve-3d;
+            animation: floatHeart 3s ease-in-out infinite;
+        }
+        .heart:before, .heart:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 80px;
+            height: 120px;
+            background: #ff4b91;
+            border-radius: 50px 50px 0 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .heart:before { left: 70px; transform: rotate(-45deg); transform-origin: 0 100%; }
+        .heart:after { left: 0; transform: rotate(45deg); transform-origin: 100% 100%; }
+        /* 脉动光效 */
+        .heart::before {
+            box-shadow: 0 0 20px rgba(255, 75, 145, 0.7), 0 0 40px rgba(255, 75, 145, 0.5), 0 0 60px rgba(255, 75, 145, 0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        /* 文字动画 */
+        .message {
+            font-size: 28px;
+            color: #333;
+            text-align: center;
+            margin-top: 30px;
+            padding: 0 20px;
+            max-width: 800px;
+            line-height: 1.8;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: perspective(1000px) rotateX(5deg);
+            transition: all 0.5s ease;
+        }
+        .message:hover {
+            transform: perspective(1000px) rotateX(0deg) scale(1.02);
+        }
+        .message span {
+            display: inline-block;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+        .message span:nth-child(1) { animation-delay: 0.2s; }
+        .message span:nth-child(2) { animation-delay: 0.4s; }
+        .message span:nth-child(3) { animation-delay: 0.6s; }
+        .message span:nth-child(4) { animation-delay: 0.8s; }
+        .signature {
+            margin-top: 20px;
+            font-style: italic;
+            color: #666;
+        }
+        /* 动画关键帧 */
+        @keyframes floatHeart {
+            0%, 100% { transform: scale(1) rotateY(0deg); }
+            25% { transform: scale(1.1) rotateY(10deg); }
+            75% { transform: scale(1.1) rotateY(-10deg); }
+        }
+        @keyframes glow {
+            0% { box-shadow: 0 0 20px rgba(255, 75, 145, 0.7); }
+            100% { box-shadow: 0 0 30px rgba(255, 75, 145, 0.9), 0 0 40px rgba(255, 75, 145, 0.7); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .message { font-size: 20px; padding: 20px; }
+            .heart { width: 120px; height: 120px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 粒子背景容器 -->
+    <div id="particles"></div>
+
+    <div class="heart"></div>
+    
+    <div class="message">
+        <span>亲爱的，</span><br>
+        <span>当我第一次见到你，我的世界就变得不一样了。</span><br>
+        <span>你的笑容像阳光一样温暖我的心，</span><br>
+        <span>你愿意让我成为你生命中最特别的人吗？</span><br>
+        <div class="signature">—— 永远爱你的人</div>
+    </div>
+
+    <script>
+        // 创建粒子背景效果
+        const createParticles = () => {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // 随机大小、位置和动画
+                const size = Math.random() * 5 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${Math.random() * 100}vw`;
+                particle.style.top = `${Math.random() * 100}vh`;
+                particle.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                particle.style.animationDelay = `${Math.random() * 2}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        };
+
+        // 页面加载完成后初始化
+        window.addEventListener('load', createParticles);
+    </script>
+</body>
+</html>
