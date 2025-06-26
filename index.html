@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱心表白</title>
+    <style>
+        body { margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; background: #fce4ec; font-family: 'Arial', sans-serif; }
+        .heart { position: relative; width: 150px; height: 150px; margin-bottom: 30px; animation: heartbeat 1.5s infinite; }
+        .heart:before, .heart:after { content: ''; position: absolute; top: 0; width: 80px; height: 120px; background: #ff4d6d; border-radius: 50px 50px 0 0; }
+        .heart:before { left: 80px; transform: rotate(-45deg); transform-origin: 0 100%; }
+        .heart:after { left: 0; transform: rotate(45deg); transform-origin: 100% 100%; }
+        @keyframes heartbeat { 0% { transform: scale(1); } 14% { transform: scale(1.1); } 28% { transform: scale(1); } 42% { transform: scale(1.1); } 70% { transform: scale(1); } }
+        .message { font-size: 24px; color: #333; text-align: center; padding: 0 20px; line-height: 1.6; }
+        .signature { margin-top: 20px; font-style: italic; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="heart"></div>
+    <div class="message">
+        亲爱的，<br>
+        当我第一次见到你，我的心跳就为你加速。<br>
+        你愿意成为我生命中最重要的人吗？<br>
+        <span class="signature">—— 永远爱你的人</span>
+    </div>
+</body>
+</html>
